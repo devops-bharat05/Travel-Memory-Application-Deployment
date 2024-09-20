@@ -154,7 +154,32 @@ Before you begin, ensure you have the following:
 
 2. **Frontend NGINX Configuration**:
    - Follow the same steps for the frontend instance, updating the `proxy_pass` directive to point to the frontend application.
-
+   - Unlink the default configuration:
+   ```bash
+   sudo unlink /etc/nginx/sites-enabled/default
+   ```
+   - Create a custom configuration:
+   ```bash
+   cd /etc/nginx/sites-available/
+   sudo vim custom_server.conf
+   ```
+   - Add the following configuration for the backend:
+   ```nginx
+   server {
+       listen 80;
+       location / {
+           proxy_pass http://<backend-ec2-public-ip>:3001;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto $scheme;
+       }
+   }
+   ```
+   - Restart NGINX:
+   ```bash
+   sudo systemctl restart nginx
+   ```
 ---
 
 ## Security Group Setup
