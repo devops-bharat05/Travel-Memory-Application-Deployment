@@ -218,7 +218,7 @@ Create a security group with the following rules:
 
 Once the deployment is complete, you can access the application using your domain name. For example:
 - **Frontend**: `http://<your-domain>`
-- **Backend**: `http://<your-domain>/api`
+- **Backend**: `http://api.<your-domain>`
 
 ---
 
