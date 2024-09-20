@@ -46,7 +46,7 @@ Before you begin, ensure you have the following:
    - **VPC**: `vpc-0321f38a7b594180d`
    - **Subnet ID**: `subnet-0f30c30418def6379`
 
-2. **Install Required Packages**:
+2. **Install Required Packages both on frontend and backend ec2 instance**:
    ```bash
    sudo apt update
    sudo apt install nodejs -y
